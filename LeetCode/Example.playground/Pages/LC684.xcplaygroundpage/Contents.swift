@@ -10,36 +10,55 @@ N개의 노드가 있는 무방향 그래프에서 N개의 edge가 주어졌을 
 
 import Foundation
 
-class Solution {
-    func findRedundantConnection(_ edges: [[Int]]) -> [Int] {
-        var arr = Array(0 ..< edges.count)
+struct UFSet {
+    var root: [Int]
+    var count: [Int]
 
-        for edge in edges {
-            if arr.find(arr[edge[0]-1]) == arr.find(arr[edge[1]-1]) {
-                return edge
-            } else {
-                arr.union(edge[0]-1, edge[1]-1)
-            }
-        }
-        return [-1,-1]
+    init(_ N: Int) {
+        root = Array(0..<N)
+        count = Array(repeating: 1, count: N)
     }
-}
 
-// MARK: - Union - find Extension for Int array
-extension Array where Element == Int {
-    mutating func find(_ i: Int) -> Int {
-        if self[i] == i {
-            return i
-        } else {
-            self[i] = find(self[i])
-            return self[i]
+    mutating func find(_ x: Int) -> Int {
+        if root[x] == x {
+            return x
         }
+
+        root[x] = self.find(root[x])
+
+        return root[x]
     }
 
     mutating func union(_ x:Int, _ y:Int) {
-        let a = find(x)
-        let b = find(y)
+        let a = self.find(x)
+        let b = self.find(y)
 
-        self[b] = a
+        let totalCount = count[a] + count[b]
+
+        if a == b {
+            return
+        } else if count[a] > count[b] {
+            root[b] = a
+            count[a] = totalCount
+        } else {
+            root[a] = b
+            count[b] = totalCount
+        }
+    }
+
+}
+
+class Solution {
+    func findRedundantConnection(_ edges: [[Int]]) -> [Int] {
+        var set = UFSet(edges.count)
+
+        for edge in edges {
+            if set.find(edge[0]-1) == set.find(edge[1]-1) {
+                return edge
+            } else {
+                set.union(edge[0]-1, edge[1]-1)
+            }
+        }
+        return [-1,-1]
     }
 }
