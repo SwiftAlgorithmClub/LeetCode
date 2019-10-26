@@ -59,11 +59,14 @@ extension Array where Element == Int {
         if parent[node] == -1 {
             return node
         }
-        return findParent(parent: &parent, node: parent[node])
+        let p =  findParent(parent: &parent, node: parent[node])
+        print(#function, "found parent: \(p)")
+        return p
     }
     func union(parent: inout [Int], x: Int, y: Int) {
         let xset = findParent(parent: &parent, node: x)
         let yset = findParent(parent: &parent, node: y)
+        print(#function, "xset: \(xset), yset: \(yset)")
         parent[xset] = yset
     }
 }
@@ -76,16 +79,24 @@ class Solution {
     func findCyclic(_ edges: [[Int]]) -> [Int] {
         // Allocate memory for creating subsets
         // Initialize all subsets as single element sets
-        var parent = Array(repeating: -1, count: edges.count + 1)
+        var parent = Array(repeating: -1, count: edges.count)
 
         for (i, edge) in edges.enumerated() {
+            print("====== \(i) ======= ")
+            print("edge: \(edge)")
             let x = edge.findParent(parent: &parent, node: edge[0])
+            print("x: \(parent)")
             let y = edge.findParent(parent: &parent, node: edge[1])
+            print("y: \(parent)")
+            
+            print("x: \(x), y: \(y)")
             if x == y {
                 return edge
             }
-
+            
             edge.union(parent: &parent, x: x, y: y)
+            
+            print("after union: \(parent)")
         }
         return [-1, -1]
     }
