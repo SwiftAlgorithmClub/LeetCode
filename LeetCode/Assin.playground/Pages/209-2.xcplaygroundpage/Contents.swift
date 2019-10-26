@@ -14,14 +14,17 @@ Given an array of n positive integers and a positive integer s, find the minimal
  Output: 2
  Explanation: the subarray [4,3] has the minimal length under the problem constraint.
  ````
+ Follow up:
+  - If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n).
  
  ### Complexity analysis
  - Time complexity: O(n)
  - Space complexity: O(1)
  
- Follow up:
-  - If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n).
   
+ ### Result
+  - Runtime: 52ms
+  - Mmmory 21.1MB
 */
 class Solution {
     func minSubArrayLen(_ s: Int, _ nums: [Int]) -> Int {

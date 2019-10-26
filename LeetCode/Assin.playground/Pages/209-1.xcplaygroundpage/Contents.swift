@@ -17,26 +17,56 @@ Given an array of n positive integers and a positive integer s, find the minimal
  Explanation: the subarray [4,3] has the minimal length under the problem constraint.
  ````
  
+ Follow up:
+  - If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n).
+ 
  ### Complexity analysis
  - Time complexity: O(nlog(n))
  - Space complexity: O(n)
  
- Follow up:
-  - If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n).
   
+ ### Result
+  - Runtime: 72ms
+  - Mmmory 21.6MB
 */
 class Solution {
     func minSubArrayLen(_ s: Int, _ nums: [Int]) -> Int {
-        let size = nums.count
-        var ans = Int.max
-        var left = 0
-        var sum = 0
+        if nums.count == 0 {
+            return 0
+        }
         
-        for i in (0..<size) {
-            for j in () {
-                <#code#>
+        var sums = [Int](repeatElement(0, count: nums.count + 1))
+        var result = Int.max
+        
+        for i in 1..<sums.count {
+            sums[i] = sums[i - 1] + nums[i - 1]
+        }
+        for i in 0..<sums.count {
+            let end = binarySearch(i + 1, sums.count - 1, sums, sums[i] + s)
+            if end == sums.count {
+                break
+            }
+            if end - i < result {
+                result = end - i
             }
         }
+        
+        return result == Int.max ? 0 : result
+    }
+    private func binarySearch(_ left: Int, _ right:Int, _ nums: [Int], _ target: Int) -> Int {
+        var left = left
+        var right = right
+        var middle = 0
+        
+        while left <= right {
+            middle = (left + right) / 2
+            if nums[middle] < target {
+                left = middle + 1
+            } else {
+                right = middle - 1
+            }
+        }
+        return left
     }
 }
 
