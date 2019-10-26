@@ -52,6 +52,7 @@
 		BDAE39C02363DBD10059CA57 /* LeetCodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeetCodeUITests.swift; sourceTree = "<group>"; };
 		BDAE39C22363DBD10059CA57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDAE39CE2363DBEA0059CA57 /* Example.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Example.playground; sourceTree = "<group>"; };
+		BDAE39CF2363E0100059CA57 /* Assin.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Assin.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +83,7 @@
 		BDAE398F2363DBCF0059CA57 = {
 			isa = PBXGroup;
 			children = (
+				BDAE39CF2363E0100059CA57 /* Assin.playground */,
 				BDAE39CE2363DBEA0059CA57 /* Example.playground */,
 				BDAE399A2363DBCF0059CA57 /* LeetCode */,
 				BDAE39B42363DBD10059CA57 /* LeetCodeTests */,
