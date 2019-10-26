@@ -30,6 +30,7 @@ Given an array of n positive integers and a positive integer s, find the minimal
   - Mmmory 21.6MB
 */
 class Solution {
+
     func minSubArrayLen(_ s: Int, _ nums: [Int]) -> Int {
         if nums.count == 0 {
             return 0
@@ -42,13 +43,20 @@ class Solution {
             sums[i] = sums[i - 1] + nums[i - 1]
         }
         for i in 0..<sums.count {
+
+            print("binarySearch \(i) + 1, \(sums.count)  - 1, \(sums), \(sums[i]) + \(s)")
             let end = binarySearch(i + 1, sums.count - 1, sums, sums[i] + s)
+            
+            print("end: \(end)")
             if end == sums.count {
                 break
             }
+            print("end: \(end) - \(i) < \(result)")
             if end - i < result {
                 result = end - i
+                print("\(result) = \(end) - \(i)")
             }
+            print("result: \(result)")
         }
         
         return result == Int.max ? 0 : result
@@ -66,6 +74,7 @@ class Solution {
                 right = middle - 1
             }
         }
+        print("left: \(left) right: \(right)")
         return left
     }
 }
