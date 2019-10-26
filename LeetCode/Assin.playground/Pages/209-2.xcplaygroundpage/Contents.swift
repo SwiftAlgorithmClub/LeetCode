@@ -41,7 +41,7 @@ class Solution {
                 let result = i + 1 - left
                 ans = min(ans, result)
                 sum -= nums[left]
-                print("\(ans) = min(\(preAns), \(result) (\(i) + 1 - \(left))  sum: { \(sum) }")
+                print("i: \(i) ans: \(ans) = min(ans: \(preAns), result: \(result) (i: \(i) + 1 - left: \(left))  sum: \(sum) nums[left]: \(nums[left])")
                 left += 1
             }
         }
