@@ -162,6 +162,7 @@ fastlane/test_output
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
+!*.xcworkspace/xcuserdata/**
 /*.gcno
 
 

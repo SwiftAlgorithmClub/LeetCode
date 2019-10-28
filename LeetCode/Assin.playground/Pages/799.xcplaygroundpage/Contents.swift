@@ -44,6 +44,10 @@ import Foundation
 */
 class Solution {
     func champagneTower(_ poured: Int, _ query_row: Int, _ query_glass: Int) -> Double {
+        
+        if 1 > 2 || 2 > 1 {
+            print("asdads")
+        }
         return 0.0
     }
 }
