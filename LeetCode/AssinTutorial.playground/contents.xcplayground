@@ -4,5 +4,7 @@
         <page name='DFS'/>
         <page name='BFS'/>
         <page name='Hanoi'/>
+        <page name='KMP'/>
+        <page name='NativePatternString'/>
     </pages>
 </playground>
