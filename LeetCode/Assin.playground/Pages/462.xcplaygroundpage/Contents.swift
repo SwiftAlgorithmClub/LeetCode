@@ -21,30 +21,30 @@ You may assume the array's length is at most 10,000.
  ```
  
  ### Complexity analysis
- - Time complexity: O()
- - Space complexity: O()
+ - Time complexity: O(log N)
+ - Space complexity: O(1)
  
   
  ### Result
-  - Runtime:
-  - Mmmory:
+  - Runtime: 108ms
+  - Mmmory: 21.8MB
 */
 
+/*:
+ 
+ [1,0,0,8,6] -> [1,1,1,1,1] 로 만들기 위해 14번의 이동이 필요함
+ 
+ */
 
 class Solution {
     func minMoves2(_ nums: [Int]) -> Int {
-        var sum = 0
+        let nums = nums.sorted()
+        let mid: Int = nums[nums.count / 2]
+        var offset = 0
         for n in nums {
-            sum += n
+            offset += abs(n - mid)
         }
-        let avg = sum / nums.count
-
-        for n in nums {
-            let a = max(n, n - avg)
-            print(a)
-        }
-        return 0
+        return offset
     }
 }
-Solution().minMoves2([1, 2, 3])
-
+Solution().minMoves2([1,0,0,8,6])
