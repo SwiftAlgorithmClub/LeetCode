@@ -39,6 +39,7 @@ class TrieNode {
             self.isTerminal = true
             return true
         }
+
         if let index = self.changeAlphaToNum(characters[i]) {
             if var nextNode = self.children[index] {
                 return nextNode._insertCharacters(characters, index: i+1)
@@ -61,8 +62,34 @@ class TrieNode {
         } else {
             let result = c.asciiValue! - Character("a").asciiValue!
             return Int(result)
+        }
     }
-}
+
+    func find(_ s: String) -> Bool {
+        let str = Array(s)
+
+        return _findCharacters(characters: str, index: 0)
+    }
+
+    func _findCharacters(_ characters: [Character], index i: Int) -> Bool {
+        if characters.count == i {
+            if self.isTerminal {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        if let index = self.changeAlphaToNum(characters[i]) {
+            if var nextNode = self.children[index] {
+                return nextNode._findCharacters(characters, index: i+i)
+           } else {
+                return false
+             }
+        }
+
+        return false
+    }
 }
 
 class Solution {
