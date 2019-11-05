@@ -48,8 +48,6 @@ class Trie {
         if chars[index] == Character("?") {
             if lengthDic[chars.count - index - 1] != nil {
                 result += lengthDic[chars.count - index - 1]!
-                print(chars)
-                print(result)
             }
         } else {
             let i = getIndex(chars[index])
@@ -90,3 +88,4 @@ func solution(_ words:[String], _ queries:[String]) -> [Int] {
 
     return result
 }
+
