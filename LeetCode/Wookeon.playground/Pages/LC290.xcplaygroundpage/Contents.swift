@@ -2,7 +2,7 @@
 
 /*:
 
-## Category [Hash Table] -> 분류가 이게 맞을까요..?
+## Category [Hash Table]
 
 # 290. Word Pattern
  Input: pattern = "abba"
@@ -32,7 +32,7 @@ class Solution {
         var flag = true
         
         for i in 0..<splitPattern.count {
-            if dic.someKey(forValue: splitStr[i]) == nil {
+            if dic[splitPattern[i]] == nil && dic.someKey(forValue: splitStr[i]) == nil {
                 dic[splitPattern[i]] = splitStr[i]
             } else {
                 if dic[splitPattern[i]] != splitStr[i] {
